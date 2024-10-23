@@ -19,16 +19,13 @@ Instruct-of-Reflection: Enhancing Large Language Models Iterative Reflection Cap
 <p style="font-size:1.05rem">
 We conducted a comprehensive analysis of the iterative reflection performance of LLMs. The empirical evidence suggests that the performances of these reflection methods are unsatisfactory, primarily due to the limitations of static iterative reflection, which leads to redundant, drift, and stubborn issues. 
 <br>
-
-To mitigate this, we propose Instruct-of-Reflection (IoRT), a dynamic iterative reflection framework that integrates abstract reasoning into the reflection,  generating adaptive instruction to regulate the iterative reflection. 
 </p>
 
 <p align="center">
     <img src="./images/framework.png" width="800">
 </p>
 
-> Humans typically utilize external tools to cross-check and reﬁne their initial content, like using a search engine for fact-checking, or a code interpreter for debugging. 
-> Inspired by this observation, we introduce a framework called CRITIC that allows LLMs, which are essentially “black boxes” to validate and progressively amend their own outputs in a manner similar to human interaction with tools.
+To mitigate this, we propose Instruct-of-Reflection (IoRT), a dynamic iterative reflection framework that integrates abstract reasoning into the reflection,  generating adaptive instruction to regulate the iterative reflection. 
 
 
 ## 💬 Examples
