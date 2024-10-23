@@ -8,26 +8,13 @@ with Tool-Interactive Critiquing
 
 <div align="center">
 
-![](https://img.shields.io/badge/Task-Question%20Answering-red)
-![](https://img.shields.io/badge/Task-Commonsense%20Reasoning-yellow)
 ![](https://img.shields.io/badge/Task-Mathematical%20Reasoning-orange)
-![](https://img.shields.io/badge/Code%20License-MIT-green)
+![](https://img.shields.io/badge/Task-Commonsense%20Reasoning-yellow)
 <br>
 
 </div>
 
-<p align="center">
-  <a href="#-quick-start"><b>[Quick Start]</b></a> •
-  <!-- <a href="https://llm-agents.github.io/critic/"><b>[Website]</b></a> • -->
-  <a href="https://arxiv.org/pdf/2305.11738.pdf"><b>[Paper]</b></a> •
-  <a href="#%EF%B8%8F-citation"><b>[Citation]</b></a>
-</p>
-
-Repo for the paper "[CRITIC: Large Language Models Can Self-Correct with Tool-Interactive Critiquing](https://arxiv.org/abs/2305.11738)" [ICLR'24]
-
-
-
-
+In our exploration experiments, we evaluate the performance of CRITIC, which utilizes the results of tool interactions as external feedback, allowing us to systematically investigate the impact of this feedback on the performance of reflection. Our findings indicate that neither intrinsic self-correction nor CRITIC performs satisfactorily.
 ## 💡 Introduction
 
 <!-- set larger font size for the following text-->
@@ -36,7 +23,7 @@ For the first time, we find that LLMs' Self-Verification and Self-Correction are
 </p>
 
 <p align="center">
-    <img src="./images/framework.pdf" width="1000">
+    <img src="./images/1.png" width="1000">
 </p>
 
 > Humans typically utilize external tools to cross-check and reﬁne their initial content, like using a search engine for fact-checking, or a code interpreter for debugging. 
