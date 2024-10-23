@@ -1,9 +1,9 @@
 <h1 align="center">
 🤔🛠️🤖 CRITIC:
 <br>
-Large Language Models Can Self-Correct
+Instruct-of-Reflection: Enhancing Large Language Models Iterative Reflection Capabilities via Dynamic-Meta Instruction
 <br>
-with Tool-Interactive Critiquing
+
 </h1>
 
 <div align="center">
