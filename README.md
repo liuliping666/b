@@ -12,12 +12,12 @@ Instruct-of-Reflection: Enhancing Large Language Models Iterative Reflection Cap
 
 </div>
 
-In our exploration experiments, we evaluate the performance of CRITIC, which utilizes the results of tool interactions as external feedback, allowing us to systematically investigate the impact of this feedback on the performance of reflection. Our findings indicate that neither intrinsic self-correction nor CRITIC performs satisfactorily.
+
 ## 💡 Introduction
 
 <!-- set larger font size for the following text-->
 <p style="font-size:1.05rem">
-For the first time, we find that LLMs' Self-Verification and Self-Correction are <b>unreliable</b>; and we propose <b>CRITIC</b>, which enables LLMs to validate and rectify themselves through interaction with external tools.
+In our exploration experiments, we evaluate the performance of CRITIC, which utilizes the results of tool interactions as external feedback, allowing us to systematically investigate the impact of this feedback on the performance of reflection. Our findings indicate that neither intrinsic self-correction nor CRITIC performs satisfactorily.
 </p>
 
 <p align="center">
