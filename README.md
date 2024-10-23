@@ -1,6 +1,4 @@
 <h1 align="center">
-🤔🛠️🤖 CRITIC:
-<br>
 Instruct-of-Reflection: Enhancing Large Language Models Iterative Reflection Capabilities via Dynamic-Meta Instruction
 <br>
 
