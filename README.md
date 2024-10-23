@@ -12,9 +12,6 @@ Instruct-of-Reflection: Enhancing Large Language Models Iterative Reflection Cap
 
 </div>
 
-
-## 💡 Introduction
-
 <!-- set larger font size for the following text-->
 <p style="font-size:1.05rem">
 We conducted a comprehensive analysis of the iterative reflection performance of LLMs. The empirical evidence suggests that the performances of these reflection methods are unsatisfactory, primarily due to the limitations of static iterative reflection, which leads to redundant, drift, and stubborn issues. 
@@ -27,7 +24,7 @@ We conducted a comprehensive analysis of the iterative reflection performance of
 
 To mitigate this, we propose Instruct-of-Reflection (IoRT), a dynamic iterative reflection framework that integrates abstract reasoning into the reflection,  generating adaptive instruction to regulate the iterative reflection. 
 
-## 🛠️ Setup
+## Setup
 
 We recommend the use of conda environments:
 
