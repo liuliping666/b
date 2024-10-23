@@ -88,7 +88,7 @@ def compare_codes(meta_thought, question, code1, answer1, code2,  answer2,args):
     result = completion.choices[0].message['content'].strip()
     token_usage = completion.usage['total_tokens']
     print("token", token_usage)
-    print(f"Model Response: {result}")  # 调试输出
+    print(f"Model Response: {result}") 
     print("-------------------------------------")
     better_code = "Code 2" if "Better Code: Code 2" in result else "Code 1"
 
@@ -144,7 +144,6 @@ def call_gpt3_5(messages, model, temperature):
 def critic_iter(sample, previous_report,previous_code,previous_answer, args):
     # load prompt
     prompt = load_prompt(args.data, args.critic_type)
-    # 构建提示词
     context = f"Question: {sample['question']}\n"
     previous_code = remove_comment(previous_code)
     context += f"{previous_code}\n"
@@ -179,7 +178,7 @@ def critic_iter(sample, previous_report,previous_code,previous_answer, args):
                 {"role": "user", "content": user_reflect_prompt}]
     result,token2 = call_gpt3_5(messages, model=args.model, temperature=args.temperature)
 
-    # 执行新代码
+
     token_sum=token1+token2
     revised_code = result.strip() if result else ""
     revised_code = extract_code_block(revised_code)
@@ -252,7 +251,6 @@ def critic(args):
             itr_result = [sample['best_pred']]
             itr_report = [sample['best_report']]
             new_itr_id = [temp_idx]
-            start_time = time()
             while iteration < args.max_iter:
                 if iteration == 0 or not finqa_equal(revised_pred, itr_base_pred):
                     iteration += 1
@@ -406,13 +404,7 @@ def critic(args):
                             print("Decision: Ending iteration with current best COT.")
                             break
 
-            end_time = time()
-            elapsed_time = end_time - start_time  # 计算运行所用的时间
-            sample.update({'elapsed_time': elapsed_time})  # 将时间记录到 sample 字典中
-            print(f"Elapsed time for idx {idx}: {elapsed_time:.2f} seconds")
-            # Update sample with the best results
-
-
+    
             sample['iteration_id'] = itr_id
             sample['new_itr_id'] = new_itr_id
             sample['iteration_answer'] = itr_result
