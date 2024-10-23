@@ -79,12 +79,12 @@ def call_gpt3_5(messages, model, temperature):
 
 
 def critic(args):
-    # 加载提示词
+  
     prompt = load_prompt(args.data, args.critic_type)
 
     print("%" * 30, "Critic", "%" * 30)
 
-    # 输入和输出文件
+ 
     now = datetime.now()
     dt_string = now.strftime("%m-%d_%H-%M")
     init_file = ""
@@ -97,7 +97,6 @@ def critic(args):
                 continue
             print("\n\n" + "=" * 30, "Idx", idx, "=" * 30)
 
-            # 在 sample 的开始处添加 idx
             sample = {**{'idx': idx}, **sample}
             token = []
 
@@ -129,7 +128,6 @@ def critic(args):
                 prompt_critic = prompt + context
                 print(context, end="")
 
-                # 调用 GPT-3.5 Turbo 进行批评
                 messages = [{"role": "system",
                              "content": "You are a mathematics and programming expert. Given previous responses, including a question, a python code solution and the output of this code, you should carefully evaluate these responses and provide detailed feedback."},
                             {"role": "user", "content": prompt_critic}]
@@ -141,7 +139,6 @@ def critic(args):
                 if context_reflect and context_reflect[-1] != "\n":
                     context_reflect += "\n"
 
-                # 生成新代码
 
 
                 user_reflect_prompt=context + context_reflect
@@ -162,8 +159,6 @@ def critic(args):
                 token_sum += token_idx
                 token.append(token_sum)
 
-
-                # 执行新代码
                 code = result.strip() if result else ""
                 code = extract_code_block(code)
                 code = code.replace("```python", "").replace("```", "").replace("```Python", "").strip()
@@ -183,7 +178,6 @@ def critic(args):
                     report = sample['report'][base_idx]
                     pred = sample['pred'][base_idx]
 
-                # 追加新结果
                 sample['code'].append(code)
                 sample['report'].append(report)
                 sample['pred'].append(pred)
