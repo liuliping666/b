@@ -11,8 +11,6 @@ with Tool-Interactive Critiquing
 ![](https://img.shields.io/badge/Task-Question%20Answering-red)
 ![](https://img.shields.io/badge/Task-Commonsense%20Reasoning-yellow)
 ![](https://img.shields.io/badge/Task-Mathematical%20Reasoning-orange)
-![](https://img.shields.io/badge/Task-Hallucination%20Detection-purple)
-![](https://img.shields.io/badge/Task-Safety-blue)
 ![](https://img.shields.io/badge/Code%20License-MIT-green)
 <br>
 
