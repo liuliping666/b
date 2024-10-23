@@ -21,7 +21,7 @@ We conducted a comprehensive analysis of the iterative reflection performance of
 </p>
 
 <p align="center">
-    <img src="./images/framework.png" width="1000">
+    <img src="./images/framework.png" width="800">
 </p>
 
 > Humans typically utilize external tools to cross-check and reﬁne their initial content, like using a search engine for fact-checking, or a code interpreter for debugging. 
