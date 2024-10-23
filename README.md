@@ -27,9 +27,7 @@ with Tool-Interactive Critiquing
 
 Repo for the paper "[CRITIC: Large Language Models Can Self-Correct with Tool-Interactive Critiquing](https://arxiv.org/abs/2305.11738)" [ICLR'24]
 
-## 🔥 News
 
-- In our [updated paper](https://arxiv.org/abs/2305.11738), we add CRITIC results of open-source LLaMA-2 models from 7B to 70B on three QA / commonsense reasoning tasks, and three mathematical code synthesis tasks.
 
 
 ## 💡 Introduction
