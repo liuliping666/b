@@ -17,7 +17,7 @@ Instruct-of-Reflection: Enhancing Large Language Models Iterative Reflection Cap
 
 <!-- set larger font size for the following text-->
 <p style="font-size:1.05rem">
-In our exploration experiments, we evaluate the performance of CRITIC, which utilizes the results of tool interactions as external feedback, allowing us to systematically investigate the impact of this feedback on the performance of reflection. Our findings indicate that neither intrinsic self-correction nor CRITIC performs satisfactorily.
+We conducted a comprehensive analysis of the iterative reflection performance of LLMs. The empirical evidence suggests that the performances of these reflection methods are unsatisfactory, primarily due to the limitations of static iterative reflection, which leads to redundant, drift, and stubborn issues. To mitigate this, we propose Instruct-of-Reflection (IoRT), a dynamic iterative reflection framework that integrates abstract reasoning into the reflection,  generating adaptive instruction to regulate the iterative reflection. 
 </p>
 
 <p align="center">
