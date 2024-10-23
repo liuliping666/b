@@ -22,18 +22,10 @@ We conducted a comprehensive analysis of the iterative reflection performance of
 </p>
 
 <p align="center">
-    <img src="./images/framework.png" width="800">
+    <img src="./images/framework.png" width="700">
 </p>
 
 To mitigate this, we propose Instruct-of-Reflection (IoRT), a dynamic iterative reflection framework that integrates abstract reasoning into the reflection,  generating adaptive instruction to regulate the iterative reflection. 
-
-
-## 💬 Examples
-
-<p align="center">
-    <img src="./images/demo.png" width="900">
-</p>
-
 
 ## 🛠️ Setup
 
