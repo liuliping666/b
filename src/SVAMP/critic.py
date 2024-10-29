@@ -80,12 +80,9 @@ def call_gpt3_5(messages, model, temperature):
 
 
 def critic(args):
-    # 加载提示词
     prompt = load_prompt(args.data, args.critic_type)
 
     print("%" * 30, "Critic", "%" * 30)
-
-    # 输入和输出文件
     now = datetime.now()
     dt_string = now.strftime("%m-%d_%H-%M")
     init_file = f''
@@ -98,7 +95,6 @@ def critic(args):
                 continue
             print("\n\n" + "=" * 30, "Idx", idx, "=" * 30)
 
-            # 在 sample 的开始处添加 idx
             sample = {**{'idx': idx}, **sample}
 
             start_time = time()
@@ -112,7 +108,6 @@ def critic(args):
                     sample['report'] = [sample['report']]
                 print("\n" + "-" * 20, "iteration", itr, "-" * 20)
 
-                # 批评最新的非 "None" 答案
                 base_idx = itr - 1
                 while base_idx > 0 and sample['pred'][base_idx] is None:
                     base_idx -= 1
@@ -120,7 +115,6 @@ def critic(args):
 
                 previous_code = remove_comment(sample['code'][base_idx])
 
-                # 构建提示词
                 context = f"Question: {sample['question']}\n"
                 context += f"{previous_code}\n"
                 if args.use_tool:
@@ -142,7 +136,7 @@ def critic(args):
                     context_reflect += "\n"
 
                 user_reflect_prompt = context + context_reflect
-                print("--------------------------------------------------------")
+                print("-"*30)
                 print(user_reflect_prompt, end="")
 
                 sys_reflect_prompt = (
@@ -158,7 +152,6 @@ def critic(args):
                 token_sum += token_idx
                 token.append(token_sum)
 
-                # 执行新代码
                 code = result.strip() if result else ""
                 code = extract_code_block(code)
                 code = code.replace("```python", "").replace("```", "").replace("```Python", "").strip()
@@ -170,7 +163,7 @@ def critic(args):
                 print("Execution:", report)
                 print("Output: answer =", pred)
 
-                if code.strip() == sample['code'][base_idx].strip():  # 没有修正
+                if code.strip() == sample['code'][base_idx].strip(): 
                     corrected = False
                     code = sample['code'][base_idx]
                     report = sample['report'][base_idx]
