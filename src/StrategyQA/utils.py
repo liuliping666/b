@@ -1,4 +1,4 @@
-# Modified based on: https://github.com/wenhuchen/Program-of-Thoughts/blob/main/tool.py
+# Modified based on: https://github.com/microsoft/ProphetNet/tree/master/CRITIC
 import re
 from typing import Union, Any
 from math import isclose
