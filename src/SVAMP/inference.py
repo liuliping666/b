@@ -24,7 +24,7 @@ openai.api_base = ""
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--data", default="svamp", type=str)
-    parser.add_argument("--model", default="gpt-3.5-turbo-0613", type=str)  # 这里设定默认模型
+    parser.add_argument("--model", default="gpt-3.5-turbo-0613", type=str) 
     parser.add_argument("--prompt_type", default="pot", type=str)
     parser.add_argument("--split", default="test", type=str)
     parser.add_argument("--num_test_sample", default=-1, type=int) # -1 for full data
@@ -119,7 +119,7 @@ def inference(args):
             raise NotImplementedError(args.prompt_type)
 
         end_time = time()
-        elapsed_time = end_time - start_time  # 计算运行时间
+        elapsed_time = end_time - start_time 
 
 
 
