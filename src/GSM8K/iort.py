@@ -82,14 +82,14 @@ def compare_codes(meta_thought, question, code1, answer1, code2,  answer2,args):
         temperature=args.temperature
     )
 
-    print("-------------------------------------")
+    print("-"*30)
     print(compare_prompt)
-    print("--------------------------------------")
+    print("-"*30)
     result = completion.choices[0].message['content'].strip()
     token_usage = completion.usage['total_tokens']
     print("token", token_usage)
     print(f"Model Response: {result}") 
-    print("-------------------------------------")
+    print("-"*30)
     better_code = "Code 2" if "Better Code: Code 2" in result else "Code 1"
 
     return better_code, token_usage
@@ -123,7 +123,7 @@ def decide_next_step(meta_thought, question, code1, answer1, code2, answer2, arg
 
     result = completion.choices[0].message['content'].strip()
     token_usage = completion.usage['total_tokens']
-    print("==================== Teacher stop or iteration decision========================")
+    print("="*15,"Teacher stop or iteration decision","="*15)
     print(result)
     print("token", token_usage)
     next_step = "Refresh" if "**Refresh**" in result else "End Iteration"
@@ -164,7 +164,7 @@ def critic_iter(sample, previous_report,previous_code,previous_answer, args):
         context_reflect += "\n"
 
     user_reflect_prompt = context + context_reflect
-    print("--------------------------------------------------------")
+    print("-"*30)
     print(user_reflect_prompt, end="")
 
     sys_reflect_prompt = (
@@ -271,13 +271,11 @@ def critic(args):
                     sample['report'].append(revised_report)
                     sample['pred'].append(revised_pred)
 
-                print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Compare Code%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+                print("%"*15,"Compare Code","%"*15)
                 print("Code 1:")
                 print(itr_base_code)
-                print()
                 print("Code 2:")
                 print(revised_code)
-                print()
                 print("Report 1:", itr_base_report)
                 print("Report 2:", revised_report)
                 print(f"Gold answer: {sample['gt']}")
@@ -352,7 +350,7 @@ def critic(args):
                             itr_base_report = temp_report
                             if not finqa_equal(revised_pred, itr_base_pred):
                                 # Compare Codes and decide the better one
-                                print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%Compare Cot%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+                                print("%"*15,"Compare Code","%"*15)
                                 print("Code 1:")
                                 print(itr_base_code)
                                 print("Code 2:")
