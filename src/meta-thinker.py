@@ -22,6 +22,8 @@ class SimilarityCalculator:
             embedding = outputs.last_hidden_state[:, 0, :]
         return embedding.numpy()
 
+openai.api_key = ""
+openai.api_base = ""
 
 class VectorDatabase:
     def __init__(self):
