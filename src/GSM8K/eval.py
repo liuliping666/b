@@ -61,7 +61,7 @@ def calculate_accuracy(jsonl_file):
 accuracies = calculate_accuracy(filename2)
 
 print("IoRT",accuracies)
-print("--------------------------------------------")
+print("-"*30)
 
 
 
