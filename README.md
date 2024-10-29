@@ -27,7 +27,7 @@ SVAMP:
 - Meta: `python -m src.meta-thinker`
 - Refresh: `python -m src.SAVMP.inference`
 - IoRT: `python -m src.SVAMP.iort`
-- Evaluation: `python -m src.GSM8K.eval`
+- Evaluation: `python -m src.SVAMP.eval`
   
 ### Commonsense Reasoning
 - Meta: `python -m src.meta-thinker`
