@@ -82,14 +82,14 @@ def compare_codes(meta_thought, question, code1, answer1, code2,  answer2,args):
         temperature=args.temperature
     )
 
-    print("-------------------------------------")
+    print("-"*30)
     print(compare_prompt)
-    print("--------------------------------------")
+     print("-"*30)
     result = completion.choices[0].message['content'].strip()
     token_usage = completion.usage['total_tokens']
     print("token", token_usage)
-    print(f"Model Response: {result}")  # 调试输出
-    print("-------------------------------------")
+    print(f"Model Response: {result}") 
+    print("-"*30)
     better_code = "Code 2" if "Better Code: Code 2" in result else "Code 1"
 
     return better_code, token_usage
@@ -123,7 +123,7 @@ def decide_next_step(meta_thought, question, code1, answer1, code2, answer2, arg
 
     result = completion.choices[0].message['content'].strip()
     token_usage = completion.usage['total_tokens']
-    print("==================== Teacher stop or iteration decision========================")
+    print("="*15,"Teacher stop or iteration decision","="*15)
     print(result)
     print("token", token_usage)
     next_step = "Refresh" if "**Refresh**" in result else "End Iteration"
@@ -144,7 +144,6 @@ def call_gpt3_5(messages, model, temperature):
 def critic_iter(sample, previous_report,previous_code,previous_answer, args):
     # load prompt
     prompt = load_prompt(args.data, args.critic_type)
-    # 构建提示词
     context = f"Question: {sample['question']}\n"
     previous_code = remove_comment(previous_code)
     context += f"{previous_code}\n"
@@ -165,7 +164,7 @@ def critic_iter(sample, previous_report,previous_code,previous_answer, args):
         context_reflect += "\n"
 
     user_reflect_prompt = context + context_reflect
-    print("--------------------------------------------------------")
+    print("-"*30)
     print(user_reflect_prompt, end="")
 
     sys_reflect_prompt = (
@@ -179,7 +178,6 @@ def critic_iter(sample, previous_report,previous_code,previous_answer, args):
                 {"role": "user", "content": user_reflect_prompt}]
     result,token2 = call_gpt3_5(messages, model=args.model, temperature=args.temperature)
 
-    # 执行新代码
     token_sum=token1+token2
     revised_code = result.strip() if result else ""
     revised_code = extract_code_block(revised_code)
@@ -205,9 +203,6 @@ def refresh_code(question,args):
     # parse result
     ans, report = safe_execute(result)
     prediction = floatify_ans(ans)
-
-
-
     return result, prediction,token_usage
 
 
@@ -252,7 +247,6 @@ def critic(args):
             itr_result = [sample['best_pred']]
             itr_report = [sample['best_report']]
             new_itr_id = [temp_idx]
-            start_time = time()
             while iteration < args.max_iter:
                 if iteration == 0 or not finqa_equal(revised_pred, itr_base_pred):
                     iteration += 1
@@ -273,13 +267,11 @@ def critic(args):
                     sample['report'].append(revised_report)
                     sample['pred'].append(revised_pred)
 
-                print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Compare Code%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+                print("%"*15,"Compare Cot","%"*15)
                 print("Code 1:")
                 print(itr_base_code)
-                print()
                 print("Code 2:")
                 print(revised_code)
-                print()
                 print("Report 1:", itr_base_report)
                 print("Report 2:", revised_report)
                 print(f"Gold answer: {sample['gt']}")
@@ -354,7 +346,7 @@ def critic(args):
                             itr_base_report = temp_report
                             if not finqa_equal(revised_pred, itr_base_pred):
                                 # Compare Codes and decide the better one
-                                print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%Compare Cot%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+                               print("%"*15,"Compare Cot","%"*15)
                                 print("Code 1:")
                                 print(itr_base_code)
                                 print("Code 2:")
@@ -405,13 +397,6 @@ def critic(args):
                         else:
                             print("Decision: Ending iteration with current best COT.")
                             break
-
-            end_time = time()
-            elapsed_time = end_time - start_time  # 计算运行所用的时间
-            sample.update({'elapsed_time': elapsed_time})  # 将时间记录到 sample 字典中
-            print(f"Elapsed time for idx {idx}: {elapsed_time:.2f} seconds")
-            # Update sample with the best results
-
 
             sample['iteration_id'] = itr_id
             sample['new_itr_id'] = new_itr_id
