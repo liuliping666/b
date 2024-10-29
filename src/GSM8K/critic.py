@@ -138,7 +138,7 @@ def critic(args):
                     context_reflect += "\n"
 
                 user_reflect_prompt=context + context_reflect
-                print("--------------------------------------------------------")
+                print("-"*30)
                 print(user_reflect_prompt, end="")
 
                 sys_reflect_prompt = (
