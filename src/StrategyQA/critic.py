@@ -79,12 +79,9 @@ def call_gpt3_5(messages, model, temperature):
 
 
 def critic(args):
-    # 加载提示词
     prompt = load_prompt(args.data, args.critic_type)
 
     print("%" * 30, "Critic", "%" * 30)
-
-    # 输入和输出文件
     now = datetime.now()
     dt_string = now.strftime("%m-%d_%H-%M")
     init_file = ""
@@ -97,7 +94,6 @@ def critic(args):
                 continue
             print("\n\n" + "=" * 30, "Idx", idx, "=" * 30)
 
-            # 在 sample 的开始处添加 idx
             sample = {**{'idx': idx}, **sample}
             token = []
 
@@ -114,9 +110,6 @@ def critic(args):
                 while base_idx > 0 and sample['pred'][base_idx] is None:
                     base_idx -= 1
                 print("Correct based on iter:", base_idx)
-
-
-
                 previous_code = remove_comment(sample['code'][base_idx])
 
 
@@ -141,11 +134,8 @@ def critic(args):
                 if context_reflect and context_reflect[-1] != "\n":
                     context_reflect += "\n"
 
-                # 生成新代码
-
-
                 user_reflect_prompt=context + context_reflect
-                print("--------------------------------------------------------")
+                print("-"*30)
                 print(user_reflect_prompt, end="")
 
                 sys_reflect_prompt = (
@@ -177,13 +167,13 @@ def critic(args):
                 print("Output: answer =", pred)
 
 
-                if code.strip() == sample['code'][base_idx].strip():  # 没有修正
+                if code.strip() == sample['code'][base_idx].strip(): 
                     corrected = False
                     code = sample['code'][base_idx]
                     report = sample['report'][base_idx]
                     pred = sample['pred'][base_idx]
 
-                # 追加新结果
+    
                 sample['code'].append(code)
                 sample['report'].append(report)
                 sample['pred'].append(pred)
