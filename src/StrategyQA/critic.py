@@ -122,7 +122,6 @@ def critic(args):
                 prompt_critic = prompt + context
                 print(context, end="")
 
-                # 调用 GPT-3.5 Turbo 进行批评
                 messages = [{"role": "system",
                              "content": "You are a mathematics and programming expert. Given previous responses, including a question, a python code solution and the output of this code, you should carefully evaluate these responses and provide detailed feedback."},
                             {"role": "user", "content": prompt_critic}]
@@ -153,7 +152,6 @@ def critic(args):
                 token.append(token_sum)
 
 
-                # 执行新代码
                 code = result.strip() if result else ""
                 code = extract_code_block(code)
                 code = code.replace("```python", "").replace("```", "").replace("```Python", "").strip()
